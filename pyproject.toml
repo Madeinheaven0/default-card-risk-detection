@@ -2,4 +2,13 @@
 name = "credit-default-card"
 version = "0.1.0"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "ipykernel>=7.3.0",
+    "matplotlib>=3.11.1",
+    "numpy>=2.5.2",
+    "pandas>=3.0.5",
+    "pingouin>=0.6.1",
+    "polars>=1.44.1",
+    "pyarrow>=25.0.1",
+    "seaborn>=0.13.2",
+]
