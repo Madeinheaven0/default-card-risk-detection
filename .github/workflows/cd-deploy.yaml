@@ -7,7 +7,6 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    needs: test # (Optionnel) Attend que la CI passe si tu veux lier les workflows
 
     steps:
       - name: Checkout code
