@@ -6,7 +6,7 @@ from entities import customer
 from features import customer_params_source
 
 params_customer = FeatureView(
-    name="customer params",
+    name="customer_params",
     entities=[customer],
     ttl=timedelta(1),
     schema=[
