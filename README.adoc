@@ -1,0 +1,120 @@
+= 💳 Credit Risk Scoring & Detection Pipeline
+Epée Epée Landry <https://github.com/Madeinheaven0[GitHub]>
+:toc: left
+:toclevels: 3
+:icons: font
+:source-highlighter: highlight.js
+
+A comprehensive Machine Learning and MLOps engineering system designed for credit risk assessment and default prediction. This project integrates financial data processing, classification model fine-tuning, and a robust MLOps architecture for deployment and continuous monitoring.
+
+---
+
+== 📌 Project Overview
+
+The primary objective of this project is to predict a customer's probability of default based on socio-economic and financial features.
+
+=== Key Features
+* **Machine Learning Pipeline:** Data preprocessing, feature engineering, class imbalance management, and scoring model calibration.
+* **Fine-Tuning:** Hyperparameter optimization for classification models (Scikit-learn / XGBoost / LightGBM) to maximize Recall and ROC-AUC metrics.
+* **Serving API (In Progress):** Model serving via a high-performance **FastAPI** web service.
+* **User Interface (Upcoming):** Interactive **Streamlit** dashboard for manual feature input and real-time scoring simulation.
+* **Monitoring & Observability (In Progress):** Data drift and performance monitoring in production using **Prometheus** and **Grafana**.
+
+---
+
+== 🛠️ Tech Stack
+
+* **Languages:** Python 3.10+
+* **Machine Learning & Data Science:** Pandas, NumPy, Scikit-learn, XGBoost / LightGBM
+* **MLOps & Feature Store:** Feast
+* **Backend API:** FastAPI, Uvicorn
+* **Monitoring & Observability:** Prometheus, Grafana
+* **Frontend / Visualization:** Streamlit
+* **Containerization:** Docker, Docker Compose
+
+---
+
+== 📐 System Architecture
+
+[plantuml, system-architecture, png]
+....
+[ Customer Data / History ]
+            │
+            ▼
+     [ Feature Store (Feast) ]
+            │
+            ▼
+ [ Fine-Tuning & Model Training ] ◄── (Current Phase)
+            │
+            ▼
+    [ API Service (FastAPI) ]
+            │
+  ┌─────────┴─────────┐
+  ▼                   ▼
+[ Streamlit Dashboard ] [ Prometheus / Grafana ] (Monitoring)
+....
+
+---
+
+== 🚦 Project Roadmap
+
+* [x] Exploratory Data Analysis (EDA) and cleaning
+* [x] Feature Engineering Pipeline
+* [x] Feature Store Setup (Feast)
+* [x] Initial Training & **Model Fine-Tuning** *(Current Phase)*
+* [ ] REST API Development with **FastAPI**
+* [ ] **Streamlit** Dashboard Creation
+* [ ] Infrastructure Monitoring Setup with **Prometheus** & **Grafana**
+* [ ] Full Containerization with Docker Compose
+
+---
+
+== 🚀 Installation & Setup
+
+=== 1. Clone the Repository
+[source,bash]
+----
+git clone https://github.com/Madeinheaven0/default-card-risk-detection.git
+cd credit-risk-detection
+----
+
+=== 2. Install Dependencies with `pyproject.toml`
+
+==== Option A: Using `pip` (Standard)
+[source,bash]
+----
+python -m venv venv
+source venv/bin/activate  # On Linux/macOS
+# venv\Scripts\activate     # On Windows
+pip install .
+----
+
+==== Option B: Using `Poetry`
+[source,bash]
+----
+poetry install
+poetry shell
+----
+
+==== Option C: Using `uv` (Ultra-fast)
+[source,bash]
+----
+uv venv
+source .venv/bin/activate
+uv pip install .
+----
+
+=== 3. Run Mode Training
+[source,bash]
+----
+python src/models/train.py
+# Or with Poetry: poetry run python src/train_and_tune.py
+----
+
+---
+
+== 👤 Author
+
+**Epée Epée Landry** +
+_AI Engineer & Data Scientist_ +
+icon:github[] https://github.com/Madeinheaven0

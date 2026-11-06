@@ -1,0 +1,110 @@
+# ==========================================
+# Python & Bytecode
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# ==========================================
+# Virtual Environments & Dependencies
+# ==========================================
+.venv/
+venv/
+ENV/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ==========================================
+# Environment Variables & Configuration
+# ==========================================
+.env
+.env.*
+!.env.example
+
+# ==========================================
+# Testing & Code Quality
+# ==========================================
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+/.tox/
+
+# ==========================================
+# IDEs & Editors
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ==========================================
+# OS Generated Files
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ==========================================
+# MLOps, Tracking & Databases
+# ==========================================
+# MLflow tracking and artifacts
+mlruns/
+mlflow.db
+*.db
+*.sqlite
+*.sqlite3
+
+# Weights & Biases / TensorBoard / DVC
+wandb/
+runs/
+.dvc/
+.dvc/cache/
+
+# ==========================================
+# Datasets, Raw Data & Processed Data
+# ==========================================
+data/raw/*
+data/processed/*
+data/interim/*
+data/external/*
+data/temp/*
+*.parquet
+*.csv
+*.zip
+*.tar.gz
+
+# ==========================================
+# Models & Serialized Artifacts
+# ==========================================
+models/
+*.joblib
+*.pkl
+*.pickle
+*.onnx
+*.bin
+*.pt
+*.pth
+*.h5
+*.keras
+
+
+
+data/
+*.parquet
+*.pq

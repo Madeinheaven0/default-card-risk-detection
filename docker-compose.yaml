@@ -1,0 +1,59 @@
+
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: credit_risk_api
+    ports:
+      - "8000:8000"
+    networks:
+      - monitoring_net
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    container_name: credit_risk_streamlit
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://api:8000/predict/
+    depends_on:
+      - api
+    networks:
+      - monitoring_net
+
+  prometheus:
+    image: prom/prometheus:v2.47.0
+    container_name: credit_risk_prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring_net
+
+  grafana:
+    image: grafana/grafana:10.1.0
+    container_name: credit_risk_grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - prometheus
+    networks:
+      - monitoring_net
+
+volumes:
+  grafana_data:
+
+networks:
+  monitoring_net:
+    driver: bridge
