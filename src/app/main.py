@@ -1,5 +1,7 @@
+# src/app/main.py
 from fastapi import FastAPI
 from src.app.routers import prediction
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI(
     title="Credit Default Risk API",
@@ -9,6 +11,8 @@ app = FastAPI(
 
 # Include routers
 app.include_router(prediction.router)
+
+Instrumentator().instrument(app).expose(app, endpoint="/metrics")
 
 
 @app.get("/", tags=["Health Check"])

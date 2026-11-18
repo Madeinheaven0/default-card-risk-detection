@@ -8,11 +8,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install python dependencies
-RUN pip install --no-cache-dir streamlit requests pandas
+RUN pip install --no-cache-dir streamlit requests pandas joblib mlflow scikit-learn xgboost
 
-# Copy application code
-COPY app_streamlit.py /app/app_streamlit.py
+# Copy the entire src directory into /app/src
+COPY src /app/src
+
+# Set PYTHONPATH so Python can find the 'src' package from the root /app
+ENV PYTHONPATH=/app
 
 EXPOSE 8501
 
-CMD ["streamlit", "run", "app_streamlit.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "src/app/app_streamlit.py", "--server.port=8501", "--server.address=0.0.0.0"]
